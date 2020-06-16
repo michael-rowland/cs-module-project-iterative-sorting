@@ -1,25 +1,37 @@
-# TO-DO: Complete the selection_sort() function below
 def selection_sort(arr):
-    # loop through n-1 elements
-    for i in range(0, len(arr) - 1):
-        cur_index = i
-        smallest_index = cur_index
-        # TO-DO: find next smallest element
-        # (hint, can do in 3 loc)
-        # Your code here
-
-
-        # TO-DO: swap
-        # Your code here
-
+    for idx_i, i in enumerate(arr):
+        idx_small, small = idx_i, i
+        for idx_j, j in enumerate(arr[idx_i:]):
+            if j < small:
+                idx_small, small = idx_j, j
+        if small != i:
+            arr[idx_i], arr[idx_small+idx_i] = arr[idx_small+idx_i], arr[idx_i]
     return arr
 
-
-# TO-DO:  implement the Bubble Sort function below
+# MY SOLUTION
 def bubble_sort(arr):
-    # Your code here
+    swapped = True
+    unsorted = 0
+    while swapped:
+        swapped = False
+        for i in range(len(arr[:-1]) + unsorted):
+            if arr[i] > arr[i+1]:
+                arr[i], arr[i+1] = arr[i+1], arr[i]
+                swapped = True
+        unsorted -= 1
+    return arr
 
-
+# LOOKING AT STACK OVERFLOW
+def bubble_sort(arr):
+    length = len(arr) - 1
+    sorted = False
+    while not sorted:
+        sorted = True
+        for i in range(length):
+            if arr[i] > arr[i+1]:
+                sorted = False
+                arr[i], arr[i+1] = arr[i+1], arr[i]
+        length -= 1
     return arr
 
 '''
